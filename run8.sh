@@ -27,5 +27,5 @@ sudo dnf -y install gcc gcc-c++ luarocks zsh npm tmux wget ninja-build cmake # f
 git clone --branch latest https://github.com/neovim/neovim
 cd neovim
 git checkout stable
-make CMAKE_BUILD_TYPE=Release
-make CMAKE_INSTALL_PREFIX=$HOME/.local install
+make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local"
+make install
