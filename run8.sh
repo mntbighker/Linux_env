@@ -24,7 +24,7 @@ rm -rf Linux_env
 sudo dnf -y install epel-release # RHEL
 sudo crb enable
 sudo dnf -y install gcc gcc-c++ luarocks zsh npm tmux wget ninja-build cmake # for neovim
-git clone --branch latest https://github.com/neovim/neovim
+git clone https://github.com/neovim/neovim
 cd neovim
 git checkout stable
 make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local"
