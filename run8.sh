@@ -23,7 +23,7 @@ rm -rf Linux_env
 # sudo dnf -y install epel-release-el8 # Oracle
 sudo dnf -y install epel-release # RHEL
 sudo crb enable
-sudo dnf -y install gcc gcc-c++ luarocks zsh npm tmux wget ninja-build # for neovim
+sudo dnf -y install gcc gcc-c++ luarocks zsh npm tmux wget ninja-build cmake # for neovim
 git clone --branch v0.9.0 https://github.com/neovim/neovim\n
 cd neovim
 make CMAKE_BUILD_TYPE=Release
