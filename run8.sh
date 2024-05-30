@@ -23,6 +23,7 @@ rm -rf Linux_env
 # sudo dnf -y install epel-release-el8 # Oracle
 sudo dnf -y install epel-release # RHEL
 sudo crb enable # RHEL
+sudo dnf -y group install "Development Tools"
 sudo dnf -y install gcc-c++ luarocks zsh npm tmux wget ninja-build cmake # for neovim
 git clone https://github.com/neovim/neovim
 cd neovim
