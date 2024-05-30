@@ -8,12 +8,14 @@ fi
 if ! [ -f /usr/bin/nvim ]; then
   sudo subscription-manager repos --enable codeready-builder-for-rhel-9-$(arch)-rpms # RHEL
   sudo dnf config-manager --set-enabled ol9_codeready_builder # Oracle
+  sudo dnf config-manager --set-enabled crb # Rocky
   sudo dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm # RHEL
   sudo dnf -y install oracle-epel-release-el9 # Oracle
+  sudo dnf -y install epel-release # Rocky
   sudo dnf -y group install "Development Tools"
 fi
 
-sudo dnf -y install gcc gcc-c++ luarocks zsh npm tmux wget ninja-build cmake # for neovim
+sudo dnf -y install gcc-c++ luarocks zsh npm tmux wget ninja-build cmake # for neovim
 git clone https://github.com/neovim/neovim
 cd neovim
 git checkout stable
