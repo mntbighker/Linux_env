@@ -7,9 +7,11 @@ fi
 
 if ! [ -f /usr/bin/nvim ]; then
   sudo subscription-manager repos --enable codeready-builder-for-rhel-9-$(arch)-rpms # RHEL
-  sudo dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+  dnf config-manager --set-enabled ol9_codeready_builder # Oracle
+  sudo dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm # RHEL
+  sudo dnf -y install oracle-epel-release-el9 # Oracle
   sudo dnf -y group install "Development Tools"
-  sudo dnf -y install neovim python39 ruby ruby-devel rubygems luarocks zsh npm nodejs cargo cmake tmux wget
+  sudo dnf -y install luarocks zsh npm cmake tmux wget
 fi
 
 cd $HOME
@@ -17,8 +19,6 @@ rm -rf .config
 mv Linux_env/.config .
 mv Linux_env/.tmux.conf .
 mv Linux_env/install.sh .
-gem install colorls
-cargo install tree-sitter-cli rust_fzf
 echo -e "### Type exit after the oh-my-zsh install script finishes, to complete setup ###\n"
 sh ./install.sh && rm ./install.sh
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
