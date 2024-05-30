@@ -11,16 +11,20 @@ if ! [ -f /usr/bin/nvim ]; then
   sudo dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm # RHEL
   sudo dnf -y install oracle-epel-release-el9 # Oracle
   sudo dnf -y group install "Development Tools"
-  sudo dnf -y install luarocks zsh npm cmake tmux wget
 fi
+
+sudo dnf -y install gcc gcc-c++ luarocks zsh npm tmux wget ninja-build cmake # for neovim
+git clone https://github.com/neovim/neovim
+cd neovim
+git checkout stable
+make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local"
+make install
 
 cd $HOME
 rm -rf .config
 mv Linux_env/.config .
 mv Linux_env/.tmux.conf .
-mv Linux_env/install.sh .
 echo -e "### Type exit after the oh-my-zsh install script finishes, to complete setup ###\n"
-sh ./install.sh && rm ./install.sh
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
