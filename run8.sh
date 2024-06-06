@@ -30,3 +30,16 @@ cd neovim
 git checkout stable
 make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local"
 make install
+
+wget https://github.com/junegunn/fzf/releases/download/0.53.0/fzf-0.53.0-linux_amd64.tar.gz
+tar xzf fzf-0.53.0-linux_amd64.tar.gz
+mv fzf ~/.local/bin/
+rm fzf-0.53.0-linux_amd64.tar.gz
+cat << 'EOF' >> ~/.zshrc
+# ---- FZF -----
+
+# Set up fzf key bindings and fuzzy completion
+eval "$(fzf --zsh)"
+EOF
+source ~/.zshrc
+
