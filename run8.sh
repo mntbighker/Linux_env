@@ -37,9 +37,7 @@ mv fzf ~/.local/bin/
 rm fzf-0.53.0-linux_amd64.tar.gz
 cat << 'EOF' >> ~/.zshrc
 # ---- FZF -----
-
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
 EOF
 source ~/.zshrc
-
