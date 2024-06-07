@@ -42,7 +42,6 @@ cat << 'EOF' >> ~/.zshrc
 eval "$(fzf --zsh)"
 
 EOF
-source ~/.zshrc
 
 sudo dnf -y install fd-find
 cat << 'EOF' >> ~/.zshrc
@@ -66,7 +65,6 @@ _fzf_compgen_dir() {
 }
 
 EOF
-source ~/.zshrc
 
 cat << 'EOF' >> ~/.zshrc
 
@@ -81,4 +79,5 @@ cyan="#2CF9ED"
 export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
 
 EOF
-source ~/.zshrc
+
+echo "run source ~/.zshrc or re-login\n"
