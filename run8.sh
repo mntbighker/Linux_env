@@ -44,6 +44,7 @@ eval "$(fzf --zsh)"
 EOF
 source ~/.zshrc
 
+sudo dnf -y install fd-find
 cat << 'EOF' >> ~/.zshrc
 
 # -- Use fd instead of fzf --
