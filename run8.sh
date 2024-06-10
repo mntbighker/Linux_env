@@ -80,4 +80,11 @@ export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${
 
 EOF
 
+curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+# https://github.com/nanotee/zoxide
+cat << 'EOF' >> ~/.zshrc
+
+eval "$(zoxide init zsh --cmd cd)"
+EOF
+
 echo "run source ~/.zshrc or re-login\n"
