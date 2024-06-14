@@ -31,10 +31,10 @@ git checkout stable
 make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local"
 make install
 
-wget https://github.com/junegunn/fzf/releases/download/0.53.0/fzf-0.53.0-linux_amd64.tar.gz
-tar xzf fzf-0.53.0-linux_amd64.tar.gz
-mv fzf ~/.local/bin/
-rm fzf-0.53.0-linux_amd64.tar.gz
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install --bin
+rm -rf ~/.fzf/
+
 cat << 'EOF' >> ~/.zshrc
 
 # ---- FZF -----
@@ -43,7 +43,9 @@ eval "$(fzf --zsh)"
 
 EOF
 
-sudo dnf -y install fd-find
+dnf copr enable tkbcopr/fd
+dnf install fd
+
 cat << 'EOF' >> ~/.zshrc
 
 # -- Use fd instead of fzf --
