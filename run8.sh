@@ -11,11 +11,6 @@ mkdir -p ~/.local/bin
 mv eza ~/.local/bin/
 rm -f ~/.zcompdump*; compinit
 git clone https://github.com/eza-community/eza.git $HOME/.local/eza
-cat << 'EOF' >> ~/.zshrc
-
-# Eza
-export FPATH="$HOME/.local/eza/completions/zsh:$FPATH"' >> ~/.zshrc
-EOF
 
 rm -rf .config
 mv Linux_env/.config .
