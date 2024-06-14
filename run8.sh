@@ -95,4 +95,7 @@ cat << 'EOF' >> ~/.zshrc
 eval "$(zoxide init zsh --cmd cd)"
 EOF
 
+aliaa ls='eza'
+EOF
+
 echo "run source ~/.zshrc or re-login\n"
