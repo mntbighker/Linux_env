@@ -6,6 +6,17 @@ if ! [ -f $HOME/Linux_env/.tmux.conf ]; then
 fi
 
 cd $HOME
+wget -c https://github.com/eza-community/eza/releases/latest/download/eza_x86_64-unknown-linux-gnu.tar.gz -O - | tar xz
+mkdir -p ~/.local/bin
+mv eza ~/.local/bin/
+rm -f ~/.zcompdump*; compinit
+git clone https://github.com/eza-community/eza.git $HOME/.local/eza
+cat << 'EOF' >> ~/.zshrc
+
+# Eza
+export FPATH="$HOME/.local/eza/completions/zsh:$FPATH"' >> ~/.zshrc
+EOF
+
 rm -rf .config
 mv Linux_env/.config .
 mv Linux_env/.tmux.conf .
