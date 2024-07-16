@@ -49,8 +49,9 @@ eval "$(fzf --zsh)"
 
 EOF
 
-dnf copr enable tkbcopr/fd
-dnf install fd
+dnf copr enable tkbcopr/fd -y
+dnf copr enable atim/lazygit -y
+dnf install lazygit fd -y
 
 cat << 'EOF' >> ~/.zshrc
 
