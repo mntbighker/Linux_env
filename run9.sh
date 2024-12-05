@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if ! [ -f $HOME/Linux_env/.tmux.conf ]; then
+if ! [ -f $HOME/Linux_env/.zshrc ]; then
   echo -e "Please git clone into $HOME before running run.sh\n"
   exit
 fi
