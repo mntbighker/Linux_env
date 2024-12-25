@@ -22,6 +22,11 @@ git checkout stable
 make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local"
 make install
 
+# https://github.com/sxyazi/yazi
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup update
+cargo install --locked --git https://github.com/sxyazi/yazi.git yazi-fm yazi-cli
+
 cd $HOME
 rm -rf .config
 mv Linux_env/.config .
