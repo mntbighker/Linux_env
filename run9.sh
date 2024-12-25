@@ -103,3 +103,5 @@ rm ./.zshrc
 mv Linux_env/.zshrc .
 
 rm -rf Linux_env
+
+echo "run source ~/.zshrc or re-login\n"
