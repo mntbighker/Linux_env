@@ -89,6 +89,18 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustup update
 cargo install --locked --git https://github.com/sxyazi/yazi.git yazi-fm yazi-cli
 
+cat << 'EOF' >> ~/.zshrc
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+EOF
+
 cd $HOME
 rm -rf .config
 mv Linux_env/.config .
