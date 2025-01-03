@@ -15,7 +15,13 @@ if ! [ -f /usr/bin/nvim ]; then
   sudo dnf -y group install "Development Tools"
 fi
 
-sudo dnf -y install gcc-c++ luarocks zsh npm tmux wget ninja-build cmake # for neovim
+sudo dnf -y install gcc-c++ zsh lua lua-devel npm tmux wget ninja-build cmake # for neovim
+wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
+tar zxpf luarocks-3.11.1.tar.gz
+cd luarocks-3.11.1
+./configure && make && sudo make install
+cd ../
+rm -rf luarocks*
 git clone https://github.com/neovim/neovim
 cd neovim
 git checkout stable
