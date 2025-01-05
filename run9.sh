@@ -22,6 +22,7 @@ cd luarocks-3.11.1
 ./configure && make && sudo make install
 cd ../
 rm -rf luarocks*
+
 git clone https://github.com/neovim/neovim
 cd neovim
 git checkout stable
@@ -31,6 +32,9 @@ make install
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --bin
 rm -rf ~/.fzf/
+
+rm ./.zshrc
+mv Linux_env/.zshrc .
 
 cat << 'EOF' >> ~/.zshrc
 
@@ -116,9 +120,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
-
-rm ./.zshrc
-mv Linux_env/.zshrc .
 
 rm -rf Linux_env
 
