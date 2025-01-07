@@ -44,9 +44,9 @@ eval "$(fzf --zsh)"
 
 EOF
 
-dnf copr enable tkbcopr/fd -y
-dnf copr enable atim/lazygit -y
-dnf install lazygit fd -y
+sudo dnf copr enable tkbcopr/fd -y
+sudo dnf copr enable atim/lazygit -y
+sudo dnf install lazygit fd -y
 
 cat << 'EOF' >> ~/.zshrc
 
@@ -91,7 +91,7 @@ cat << 'EOF' >> ~/.zshrc
 eval "$(zoxide init zsh --cmd cd)"
 EOF
 
-aliaa ls='eza'
+alias ls='eza'
 EOF
 
 # https://github.com/sxyazi/yazi
