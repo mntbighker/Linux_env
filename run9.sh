@@ -29,10 +29,6 @@ git checkout stable
 make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local"
 make install
 
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install --bin
-rm -rf ~/.fzf/
-
 rm ~/.zshrc
 mv Linux_env/.zshrc .
 
@@ -89,7 +85,6 @@ curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh 
 cat << 'EOF' >> ~/.zshrc
 
 eval "$(zoxide init zsh --cmd cd)"
-EOF
 
 alias ls='eza'
 EOF
@@ -98,6 +93,13 @@ EOF
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustup update
 cargo install --locked --git https://github.com/sxyazi/yazi.git yazi-fm yazi-cli
+
+cargo install eza
+
+cat << 'EOF' >> ~/.zshrc
+
+alias ls='eza'
+EOF
 
 cat << 'EOF' >> ~/.zshrc
 
