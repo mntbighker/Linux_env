@@ -32,6 +32,11 @@ make install
 rm ~/.zshrc
 mv Linux_env/.zshrc .
 
+wget https://github.com/junegunn/fzf/releases/download/v0.57.0/fzf-0.57.0-linux_amd64.tar.gz
+tar xzf fzf-0.53.0-linux_arm64.tar.gz
+mv fzf ~/.local/bin/
+rm fzf-0.53.0-linux_arm64.tar.gz
+
 cat << 'EOF' >> ~/.zshrc
 
 # ---- FZF -----
