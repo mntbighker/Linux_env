@@ -1,21 +1,21 @@
 #!/bin/sh
 
-if ! [ -f $HOME/Linux_env/.zshrc ]; then
+if ! [ -f $HOME/Linux_env/.zshrc ] && ! [ env | grep SHELL | grep zsh ]; then
   echo -e "Please git clone into $HOME before running run.sh\n"
   exit
 fi
 
 if ! [ -f /usr/bin/nvim ]; then
   sudo subscription-manager repos --enable codeready-builder-for-rhel-9-$(arch)-rpms # RHEL
-  sudo dnf config-manager --set-enabled ol9_codeready_builder # Oracle
-  sudo dnf config-manager --set-enabled crb # Rocky
   sudo dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm # RHEL
+  sudo dnf config-manager --set-enabled ol9_codeready_builder # Oracle
   sudo dnf -y install oracle-epel-release-el9 # Oracle
+  sudo dnf config-manager --set-enabled crb # Rocky
   sudo dnf -y install epel-release # Rocky
   sudo dnf -y group install "Development Tools"
 fi
 
-sudo dnf -y install gcc-c++ zsh lua lua-devel npm tmux wget ninja-build cmake # for neovim
+sudo dnf -y install gcc-c++ zsh lua lua-devel npm tmux wget ninja-build cmake # for neovim, requires codeready
 wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
 tar zxpf luarocks-3.11.1.tar.gz
 cd luarocks-3.11.1
@@ -23,21 +23,20 @@ cd luarocks-3.11.1
 cd ../
 rm -rf luarocks*
 
+rm ~/.zshrc
+mv Linux_env/.zshrc .
+
 # Download and install nvm:
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 # Download and install Node.js:
 nvm install 23
-echo "log out/in and edit run9.sh to continue"
-exit
+source ~/.zshrc
 
 git clone https://github.com/neovim/neovim
 cd neovim
 git checkout stable
 make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local"
 make install
-
-rm ~/.zshrc
-mv Linux_env/.zshrc .
 
 wget https://github.com/junegunn/fzf/releases/download/v0.57.0/fzf-0.57.0-linux_amd64.tar.gz
 tar xzf fzf-0.57.0-linux_amd64.tar.gz
@@ -103,9 +102,9 @@ EOF
 
 # https://github.com/sxyazi/yazi
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source ~/.zshrc
 rustup update
 cargo install --locked --git https://github.com/sxyazi/yazi.git yazi-fm yazi-cli
-
 cargo install eza
 
 cat << 'EOF' >> ~/.zshrc
