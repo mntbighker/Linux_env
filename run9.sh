@@ -23,6 +23,13 @@ cd luarocks-3.11.1
 cd ../
 rm -rf luarocks*
 
+# Download and install nvm:
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+# Download and install Node.js:
+nvm install 23
+echo "log out/in and edit run9.sh to continue"
+exit
+
 git clone https://github.com/neovim/neovim
 cd neovim
 git checkout stable
