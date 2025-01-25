@@ -36,8 +36,9 @@ exit
 git clone https://github.com/neovim/neovim
 cd neovim
 git checkout stable
-make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local"
+make CMAKE_BUILD_TYPE=Release
 make install
+cd $HOME; rm -rf neovim
 exit
 wget https://github.com/junegunn/fzf/releases/download/v0.57.0/fzf-0.57.0-linux_amd64.tar.gz
 tar xzf fzf-0.57.0-linux_amd64.tar.gz
@@ -137,5 +138,6 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
 
 rm -rf Linux_env
-
+mv .zshrc.pre-oh-my-zsh .zshrc
+ 
 echo "run source ~/.zshrc or re-login\n"
