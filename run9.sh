@@ -25,19 +25,20 @@ rm -rf luarocks*
 
 rm ~/.zshrc
 mv Linux_env/.zshrc .
-
+mkdir -p $HOME/.local/bin
+exit
 # Download and install nvm:
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 # Download and install Node.js:
 nvm install 23
 source ~/.zshrc
-
+exit
 git clone https://github.com/neovim/neovim
 cd neovim
 git checkout stable
 make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local"
 make install
-
+exit
 wget https://github.com/junegunn/fzf/releases/download/v0.57.0/fzf-0.57.0-linux_amd64.tar.gz
 tar xzf fzf-0.57.0-linux_amd64.tar.gz
 mv fzf ~/.local/bin/
@@ -90,15 +91,9 @@ cyan="#2CF9ED"
 export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
 
 EOF
-
-curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+exit
 # https://github.com/nanotee/zoxide
-cat << 'EOF' >> ~/.zshrc
-
-eval "$(zoxide init zsh --cmd cd)"
-
-alias ls='eza'
-EOF
+curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
 # https://github.com/sxyazi/yazi
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -110,6 +105,13 @@ cargo install eza
 cat << 'EOF' >> ~/.zshrc
 
 alias ls='eza'
+
+EOF
+
+cat << 'EOF' >> ~/.zshrc
+
+eval "$(zoxide init zsh --cmd cd)"
+
 EOF
 
 cat << 'EOF' >> ~/.zshrc
@@ -123,7 +125,7 @@ function y() {
 	rm -f -- "$tmp"
 }
 EOF
-
+exit
 cd $HOME
 rm -rf .config
 mv Linux_env/.config .
