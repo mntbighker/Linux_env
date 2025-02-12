@@ -19,27 +19,28 @@ sudo dnf -y install gcc-c++ zsh lua lua-devel npm tmux wget ninja-build cmake # 
 wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
 tar zxpf luarocks-3.11.1.tar.gz
 cd luarocks-3.11.1
-./configure && make && sudo make install
+./configure && make
+sudo make install
 cd ../
 rm -rf luarocks*
 
 rm ~/.zshrc
 mv Linux_env/.zshrc .
 mkdir -p $HOME/.local/bin
-exit
+
 # Download and install nvm:
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 # Download and install Node.js:
-nvm install 23
 source ~/.zshrc
-exit
+nvm install 23
+
 git clone https://github.com/neovim/neovim
 cd neovim
 git checkout stable
 make CMAKE_BUILD_TYPE=Release
 sudo make install
 cd $HOME; rm -rf neovim
-exit
+
 wget https://github.com/junegunn/fzf/releases/download/v0.57.0/fzf-0.57.0-linux_amd64.tar.gz
 tar xzf fzf-0.57.0-linux_amd64.tar.gz
 mv fzf ~/.local/bin/
@@ -53,9 +54,9 @@ eval "$(fzf --zsh)"
 
 EOF
 
-sudo dnf copr enable tkbcopr/fd -y
-sudo dnf copr enable atim/lazygit -y
-sudo dnf install lazygit fd -y
+sudo dnf copr -y enable tkbcopr/fd
+sudo dnf copr -y enable atim/lazygit
+sudo dnf -y install lazygit fd
 
 cat << 'EOF' >> ~/.zshrc
 
@@ -92,13 +93,13 @@ cyan="#2CF9ED"
 export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
 
 EOF
-exit
+
 # https://github.com/nanotee/zoxide
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
 # https://github.com/sxyazi/yazi
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-source ~/.zshrc
+exit
 rustup update
 cargo install --locked --git https://github.com/sxyazi/yazi.git yazi-fm yazi-cli
 cargo install eza
