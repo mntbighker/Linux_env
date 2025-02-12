@@ -37,7 +37,7 @@ git clone https://github.com/neovim/neovim
 cd neovim
 git checkout stable
 make CMAKE_BUILD_TYPE=Release
-make install
+sudo make install
 cd $HOME; rm -rf neovim
 exit
 wget https://github.com/junegunn/fzf/releases/download/v0.57.0/fzf-0.57.0-linux_amd64.tar.gz
