@@ -6,8 +6,8 @@ if ! [ -f $HOME/Linux_env/.zshrc ] && ! [ env | grep SHELL | grep zsh ]; then
 fi
 
 if ! [ -f /usr/bin/nvim ]; then
-  sudo crb --enable # RHEL
-  sudo dnf -y install epel-release # RHEL
+  sudo subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms # RHEL
+  sudo dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm #RHEL
   sudo dnf config-manager --set-enabled ol9_codeready_builder # Oracle
   sudo dnf -y install oracle-epel-release-el9 # Oracle
   sudo dnf config-manager --set-enabled crb # Rocky
