@@ -10,7 +10,7 @@ if ! [ -f /usr/bin/zsh ]; then
   exit
 fi
 
-if ! [ env | grep "SHELL" | grep zsh ]; then
+if ! [ `env | grep "SHELL" | grep zsh` ]; then
   sudo usermod -s /usr/bin/zsh $USER
   echo -e "Log out to swict to zsh\n"
   exit
@@ -41,8 +41,8 @@ mkdir -p $HOME/.local/bin
 
 # Download and install nvm:
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+exit
 # Download and install Node.js:
-source $HOME/.zshrc
 nvm install 23
 
 git clone https://github.com/neovim/neovim
