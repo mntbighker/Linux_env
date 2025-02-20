@@ -42,7 +42,7 @@ mkdir -p $HOME/.local/bin
 # Download and install nvm:
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 # Download and install Node.js:
-source ~/.zshrc
+source $HOME/.zshrc
 nvm install 23
 
 git clone https://github.com/neovim/neovim
