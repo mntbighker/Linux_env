@@ -54,7 +54,7 @@ mv .zshrc.pre-oh-my-zsh .zshrc
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 exit
 # Download and install Node.js:
-nvm install 23
+nvm install 23.8
 
 git clone https://github.com/neovim/neovim
 cd neovim
@@ -63,10 +63,10 @@ make CMAKE_BUILD_TYPE=Release
 sudo make install
 cd $HOME; rm -rf neovim
 
-wget https://github.com/junegunn/fzf/releases/download/v0.57.0/fzf-0.57.0-linux_amd64.tar.gz
-tar xzf fzf-0.57.0-linux_amd64.tar.gz
+wget https://github.com/junegunn/fzf/releases/download/v0.60.1/fzf-0.60.1-linux_amd64.tar.gz
+tar xzf fzf-0.60.1-linux_amd64.tar.gz
 mv fzf ~/.local/bin/
-rm fzf-0.57.0-linux_amd64.tar.gz
+rm fzf-0.60.1-linux_amd64.tar.gz
 
 cat << 'EOF' >> ~/.zshrc
 
@@ -115,14 +115,11 @@ cyan="#2CF9ED"
 export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
 
 EOF
-source $HOME/.zshrc
 
 # https://github.com/nanotee/zoxide
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
-source $HOME/.zshrc
 # https://github.com/sxyazi/yazi
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-source $HOME/.zshrc
 rustup update
 cargo install --locked --git https://github.com/sxyazi/yazi.git yazi-fm yazi-cli
 cargo install eza
