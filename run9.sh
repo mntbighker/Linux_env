@@ -5,6 +5,17 @@ if ! [ -f $HOME/Linux_env/.zshrc ] && ! [ env | grep SHELL | grep zsh ]; then
   exit
 fi
 
+if ! [ -f /usr/bin/zsh ]; then
+  sudo dnf -y install zsh
+  exit
+fi
+
+if ! [ env | grep "SHELL" | grep zsh ]; then
+  sudo usermod -s /usr/bin/zsh $USER
+  echo -e "Log out to swict to zsh\n"
+  exit
+fi
+
 if ! [ -f /usr/bin/nvim ]; then
   sudo subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms # RHEL
   sudo dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm #RHEL
@@ -93,13 +104,14 @@ cyan="#2CF9ED"
 export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
 
 EOF
+source $HOME/.zshrc
 
 # https://github.com/nanotee/zoxide
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
-
+source $HOME/.zshrc
 # https://github.com/sxyazi/yazi
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-exit
+source $HOME/.zshrc
 rustup update
 cargo install --locked --git https://github.com/sxyazi/yazi.git yazi-fm yazi-cli
 cargo install eza
@@ -127,7 +139,8 @@ function y() {
 	rm -f -- "$tmp"
 }
 EOF
-exit
+source $HOME/.zshrc
+
 cd $HOME
 rm -rf .config
 mv Linux_env/.config .
@@ -141,4 +154,4 @@ git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zs
 rm -rf Linux_env
 mv .zshrc.pre-oh-my-zsh .zshrc
  
-echo "run source ~/.zshrc or re-login\n"
+echo -e "run source ~/.zshrc or re-login\n"
