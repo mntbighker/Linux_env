@@ -51,7 +51,7 @@ git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zs
 mv .zshrc.pre-oh-my-zsh .zshrc
 
 # Download and install nvm:
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
 exit
 # Download and install Node.js:
 nvm install 23.8
@@ -63,10 +63,10 @@ make CMAKE_BUILD_TYPE=Release
 sudo make install
 cd $HOME; rm -rf neovim
 
-wget https://github.com/junegunn/fzf/releases/download/v0.60.1/fzf-0.60.1-linux_amd64.tar.gz
-tar xzf fzf-0.60.1-linux_amd64.tar.gz
+wget https://github.com/junegunn/fzf/releases/download/v0.60.3/fzf-0.60.3-linux_amd64.tar.gz
+tar xzf fzf-0.60.3-linux_amd64.tar.gz
 mv fzf ~/.local/bin/
-rm fzf-0.60.1-linux_amd64.tar.gz
+rm fzf-0.60.3-linux_amd64.tar.gz
 
 cat << 'EOF' >> ~/.zshrc
 
