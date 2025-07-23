@@ -63,10 +63,10 @@ make CMAKE_BUILD_TYPE=Release
 sudo make install
 cd $HOME; rm -rf neovim
 
-wget https://github.com/junegunn/fzf/releases/download/v0.60.3/fzf-0.60.3-linux_amd64.tar.gz
-tar xzf fzf-0.60.3-linux_amd64.tar.gz
+wget https://github.com/junegunn/fzf/releases/download/v0.64.0/fzf-0.64.0-linux_amd64.tar.gz
+tar xzf fzf-0.64.0-linux_amd64.tar.gz
 mv fzf ~/.local/bin/
-rm fzf-0.60.3-linux_amd64.tar.gz
+rm fzf-0.64.0-linux_amd64.tar.gz
 
 cat << 'EOF' >> ~/.zshrc
 
