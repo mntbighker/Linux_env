@@ -27,9 +27,9 @@ if ! [ -f /usr/bin/nvim ]; then
 fi
 
 sudo dnf -y install gcc-c++ zsh lua lua-devel npm tmux wget ninja-build cmake # for neovim, requires codeready
-wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
-tar zxpf luarocks-3.11.1.tar.gz
-cd luarocks-3.11.1
+wget https://luarocks.org/releases/luarocks-3.12.2.tar.gz
+tar zxpf luarocks-3.12.2.tar.gz
+cd luarocks-3.12.2
 ./configure && make
 sudo make install
 cd ../
@@ -51,10 +51,10 @@ git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zs
 mv .zshrc.pre-oh-my-zsh .zshrc
 
 # Download and install nvm:
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 exit
 # Download and install Node.js:
-nvm install 23.8
+nvm install 24.4.1
 
 git clone https://github.com/neovim/neovim
 cd neovim
