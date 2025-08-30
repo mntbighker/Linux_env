@@ -10,6 +10,10 @@ if ! [ -f /usr/bin/zsh ]; then
   exit
 fi
 
+if ! [ -d ~/.config ]; then
+  mkdir ~/.config
+fi
+
 if ! [ `env | grep "SHELL" | grep zsh` ]; then
   sudo usermod -s /usr/bin/zsh $USER
   echo -e "Log out to swict to zsh\n"
