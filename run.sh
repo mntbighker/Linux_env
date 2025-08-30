@@ -40,8 +40,6 @@ mv Linux_env/.zshrc .
 mkdir -p $HOME/.local/bin
 
 cd $HOME
-rm -rf .config
-mv Linux_env/.config .
 mv Linux_env/.tmux.conf .
 echo -e "### Type exit after the oh-my-zsh install script finishes, to complete setup ###\n"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -62,6 +60,9 @@ git checkout stable
 make CMAKE_BUILD_TYPE=Release
 sudo make install
 cd $HOME; rm -rf neovim
+cd .config
+git clone https://github.com/radleylewis/nvim.git
+cd $HOME
 
 wget https://github.com/junegunn/fzf/releases/download/v0.64.0/fzf-0.64.0-linux_amd64.tar.gz
 tar xzf fzf-0.64.0-linux_amd64.tar.gz
