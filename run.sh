@@ -66,12 +66,12 @@ sudo make install
 cd $HOME; rm -rf neovim
 cd .config
 git clone https://github.com/radleylewis/nvim.git
-cat << 'EOF' > lua/plugins/suda-vim.lua
+cat << 'EOF' > nvim/lua/plugins/suda-vim.lua
 return {
 	"lewis6991/gitsigns.nvim",
 }
 EOF
-cat << 'EOF' >> .gitignore
+cat << 'EOF' >> nvim/.gitignore
 lua/plugins/suda-vim.lua
 EOF
 cd $HOME
