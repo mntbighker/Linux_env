@@ -126,7 +126,8 @@ curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh 
 # https://github.com/sxyazi/yazi
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustup update
-cargo install --locked --git https://github.com/sxyazi/yazi.git yazi-fm yazi-cli
+# cargo install --locked --git https://github.com/sxyazi/yazi.git yazi-fm yazi-cli
+cargo install --force --git https://github.com/sxyazi/yazi.git yazi-build
 cargo install eza
 
 cat << 'EOF' >> ~/.zshrc
