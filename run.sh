@@ -44,6 +44,8 @@ mkdir -p $HOME/.local/bin
 
 cd $HOME
 mv Linux_env/.tmux.conf .
+sudo dnf -y install http://galaxy4.net/repo/galaxy4-release-9-current.noarch.rpm
+sudo dnf -y update tmux
 echo -e "### Type exit after the oh-my-zsh install script finishes, to complete setup ###\n"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
