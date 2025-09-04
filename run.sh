@@ -21,12 +21,11 @@ if ! [ `env | grep "SHELL" | grep zsh` ]; then
 fi
 
 if ! [ -f /usr/bin/nvim ]; then
-  sudo subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms # RHEL
-  sudo dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm #RHEL
+  sudo dnf -y install epel-release # Rocky, RHEL9, 10
+  sudo crb enable # RHEL9, 10
   sudo dnf config-manager --set-enabled ol9_codeready_builder # Oracle
   sudo dnf -y install oracle-epel-release-el9 # Oracle
   sudo dnf config-manager --set-enabled crb # Rocky
-  sudo dnf -y install epel-release # Rocky
   sudo dnf -y group install "Development Tools"
 fi
 
