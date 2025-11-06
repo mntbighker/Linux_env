@@ -44,8 +44,6 @@ mkdir -p $HOME/.local/bin
 
 cd $HOME
 mv Linux_env/.tmux.conf .
-sudo dnf -y install http://galaxy4.net/repo/galaxy4-release-9-current.noarch.rpm
-sudo dnf -y update tmux
 echo -e "### Type exit after the oh-my-zsh install script finishes, to complete setup ###\n"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -57,7 +55,7 @@ mv .zshrc.pre-oh-my-zsh .zshrc
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 exit
 # Download and install Node.js:
-nvm install 24.4.1
+nvm install node
 
 git clone https://github.com/neovim/neovim
 cd neovim
@@ -66,21 +64,13 @@ make CMAKE_BUILD_TYPE=Release
 sudo make install
 cd $HOME; rm -rf neovim
 cd .config
-git clone https://github.com/mntbighker/nvim.git
-cat << 'EOF' > nvim/lua/plugins/suda-vim.lua
-return {
-	"lewis6991/gitsigns.nvim",
-}
-EOF
-cat << 'EOF' >> nvim/.gitignore
-lua/plugins/suda-vim.lua
-EOF
+git clone https://github.com/radleylewis/nvim.git
 cd $HOME
 
-wget https://github.com/junegunn/fzf/releases/download/v0.64.0/fzf-0.64.0-linux_amd64.tar.gz
-tar xzf fzf-0.64.0-linux_amd64.tar.gz
+wget https://github.com/junegunn/fzf/releases/download/v0.66.1/fzf-0.66.1-linux_amd64.tar.gz
+tar xzf fzf-0.66.1-linux_amd64.tar.gz
 mv fzf ~/.local/bin/
-rm fzf-0.64.0-linux_amd64.tar.gz
+rm fzf-0.66.1-linux_amd64.tar.gz
 
 cat << 'EOF' >> ~/.zshrc
 
